@@ -10,11 +10,8 @@
   <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/@fortawesome/fontawesome-free/css/all.css">
 
-  <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app.css">
-  <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/main/app-dark.css">
-  <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/shared/iconly.css">
-  <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/pages/summernote.css">
-  <link rel="stylesheet" href="<?= base_url(); ?>/assets/css/pages/sweetalert2.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>/template/assets/css/sweetalert2.min.css">
+  <link rel="icon" href="<?= base_url(); ?>/template/assets/img/favicon.png">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/style.css">
@@ -59,10 +56,10 @@
           </li>
         </ul>
       </nav>
-      <div class="main-sidebar ">
+      <div class="main-sidebar sidebar-style-2" tabindex="1" style="overflow: hidden; outline: none;">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <img style="margin-left: 20;" src="https://sppd.fckng.site//assets/compiled/png/favicon.png" alt="logo" width="50">
+            <img style="margin-left: 20;" src="<?= base_url(); ?>/template/assets/img/favicon.png" alt="logo" width="50">
             <a href="<?= site_url() ?>">Kerjasama</a>
           </div>
 
@@ -93,42 +90,15 @@
   <!-- General JS Scripts -->
   <!-- General JS Scripts -->
   <script src="<?= base_url() ?>/template/node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="<?= base_url() ?>/template/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
-
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
-  <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
-
-  <!-- JS Libraies -->
-
-
+  <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <!-- Template JS File -->
+  <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
-  <script src="<?= base_url() ?>/template/assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="<?= base_url(); ?>/assets/js/app.js"></script>
-  <script src="<?= base_url(); ?>/assets/js/extensions/jquery.min.js"></script>
-  <script>
-    var wtf = $.ajax({
-      url: "<?= base_url() . '/admin/statistic'; ?>",
-      async: false,
-      dataType: 'json'
-    }).responseJSON;
-  </script>
-  <script src="<?= base_url(); ?>/assets/js/extensions/summernote.js"></script>
-  <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.js"></script>
-  <script src="<?= base_url(); ?>/assets/js/extensions/sweetalert2.min.js"></script>
-  <script>
-    $("#summernote").summernote({
-      tabsize: 2,
-      height: 320,
-    })
-  </script>
+  <script src="<?= base_url(); ?>/template/assets/css/sweetalert2.min.js"></script>
   <?php if (session()->getFlashdata('pesan')) : ?>
     <script>
       Swal.fire(

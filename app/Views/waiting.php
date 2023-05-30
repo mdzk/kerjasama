@@ -21,14 +21,13 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-
                         <div class="card-body">
                             <div class="login-brand">
-                                <img src="https://arsip.fckng.site/assets/img/checklist.png" alt="logo" width="200" class="shadow-light">
+                                <img src="<?= base_url(); ?>/template/assets/img/checklist.png" alt="logo" width="200">
                             </div>
                             <h4>Akun Berhasil didaftarkan</h4>
                             <a>Silahkan tunggu verifikasi admin agar akun dapat di gunakan</a>
-                            <div class="form-group">
+                            <div class="form-group mt-4">
                                 <a href="/" class="btn btn-primary btn-lg btn-block" tabindex="2">
                                     Kembali
                                 </a>

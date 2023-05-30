@@ -1,0 +1,140 @@
+INFO - 2023-05-14 15:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:04:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-05-14 15:05:03 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\project_web\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 C:\xampp\htdocs\project_web\system\Database\MySQLi\Connection.php(174): mysqli->real_connect('localhost', 'root', '', 'db_kerjasama', 3306, '', 0)
+#1 C:\xampp\htdocs\project_web\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\project_web\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\project_web\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\project_web\system\Model.php(268): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\project_web\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\project_web\app\Controllers\Auth.php(22): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\project_web\system\CodeIgniter.php(934): App\Controllers\Auth->auth()
+#8 C:\xampp\htdocs\project_web\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#9 C:\xampp\htdocs\project_web\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\project_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\project_web\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\project_web\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\project_web\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\project_web\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\project_web\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\project_web\system\Model.php(268): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\project_web\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\project_web\app\Controllers\Auth.php(22): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\project_web\system\CodeIgniter.php(934): App\Controllers\Auth->auth()
+#7 C:\xampp\htdocs\project_web\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\project_web\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\project_web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\project_web\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2023-05-14 15:05:03 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `nik` = :nik:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Auth.php(22): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Auth->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\project_web\\public\\index.php')
+INFO - 2023-05-14 15:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:05:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:05:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:05:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:05:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:09:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:23:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-05-14 15:23:12 --> Undefined variable $tb_uk
+in APPPATH\Views\user\akun.php on line 47.
+ 1 APPPATH\Views\user\akun.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tb_uk', 'C:\\xampp\\htdocs\\project_web\\app\\Views\\user\\akun.php', 47)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\project_web\\app\\Views\\user\\akun.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('user/akun', [], true)
+ 5 APPPATH\Controllers\Akun.php(16): view('user/akun', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Akun->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Akun))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\project_web\\public\\index.php')
+INFO - 2023-05-14 15:23:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:28:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-05-14 15:28:09 --> Undefined array key "foto"
+in APPPATH\Controllers\Akun.php on line 149.
+ 1 APPPATH\Controllers\Akun.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "foto"', 'C:\\xampp\\htdocs\\project_web\\app\\Controllers\\Akun.php', 149)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Akun->update()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Akun))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\project_web\\public\\index.php')
+INFO - 2023-05-14 15:28:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:29:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-05-14 15:29:11 --> Undefined array key "nik"
+in APPPATH\Controllers\Akun.php on line 148.
+ 1 APPPATH\Controllers\Akun.php(148): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nik"', 'C:\\xampp\\htdocs\\project_web\\app\\Controllers\\Akun.php', 148)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Akun->update()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Akun))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\project_web\\public\\index.php')
+INFO - 2023-05-14 15:29:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:32:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-05-14 15:32:20 --> Undefined array key "user"
+in APPPATH\Views\user\akun.php on line 255.
+ 1 APPPATH\Views\user\akun.php(255): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user"', 'C:\\xampp\\htdocs\\project_web\\app\\Views\\user\\akun.php', 255)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\project_web\\app\\Views\\user\\akun.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('user/akun', [], true)
+ 5 APPPATH\Controllers\Akun.php(16): view('user/akun', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Akun->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Akun))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\project_web\\public\\index.php')
+INFO - 2023-05-14 15:32:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:32:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:32:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-05-14 15:32:37 --> Undefined array key "user"
+in APPPATH\Views\user\akun.php on line 255.
+ 1 APPPATH\Views\user\akun.php(255): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user"', 'C:\\xampp\\htdocs\\project_web\\app\\Views\\user\\akun.php', 255)
+ 2 SYSTEMPATH\View\View.php(213): include('C:\\xampp\\htdocs\\project_web\\app\\Views\\user\\akun.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('user/akun', [], true)
+ 5 APPPATH\Controllers\Akun.php(16): view('user/akun', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Akun->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Akun))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs\\project_web\\public\\index.php')
+INFO - 2023-05-14 15:34:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:35:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:35:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:40:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:40:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:40:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-05-14 15:40:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

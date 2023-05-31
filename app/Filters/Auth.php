@@ -22,7 +22,7 @@ class Auth implements FilterInterface
         if (!empty($arguments[0])) {
 
             if (!in_array($_SESSION['roles'], $arguments)) {
-                return redirect()->to('/home');
+                return redirect()->to('/');
             }
 
             // if ($_SESSION['role'] !== $arguments[0]) {

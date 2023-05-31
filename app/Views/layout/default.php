@@ -16,6 +16,8 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/style.css">
   <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/components.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/datatables.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -23,18 +25,20 @@
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
+        <ul class="navbar-nav mr-3">
+          <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+          <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+        </ul>
         <form class="form-inline mr-auto">
-          <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-          </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-            <div class="search-result">
-            </div>
-          </div>
+          <?php if (session('roles') == 'admin' || session('roles') == 'pimpinan') : ?>
+            <!-- <div class="search-element">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+              <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+              <div class="search-backdrop"></div>
+              <div class="search-result">
+              </div>
+            </div> -->
+          <?php endif; ?>
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
@@ -94,11 +98,14 @@
   <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <!-- Template JS File -->
+  <script src="<?= base_url() ?>/template/assets/js/app.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="<?= base_url(); ?>/template/assets/css/sweetalert2.min.js"></script>
+  <script src="<?= base_url(); ?>/template/assets/js/sweetalert2.min.js"></script>
+  <script src="<?= base_url(); ?>/template/assets/js/datatables.min.js"></script>
+  <script src="<?= base_url(); ?>/template/assets/js/dataTables.bootstrap4.min.js"></script>
   <?php if (session()->getFlashdata('pesan')) : ?>
     <script>
       Swal.fire(
@@ -108,6 +115,11 @@
       )
     </script>
   <?php endif; ?>
+  <script>
+    $(document).ready(function() {
+      $('#table-1').DataTable();
+    });
+  </script>
 </body>
 
 </html>

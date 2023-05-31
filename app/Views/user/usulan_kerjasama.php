@@ -17,64 +17,66 @@
         <div class="card-header">
           <h4>Usulan Kerjasama</h4>
         </div>
-        <table class="table">
-          <thead>
-            <tr style="text-align:center;">
-              <th scope="col">No</th>
-              <th scope="col">Perihal Kerjasama </th>
-              <th scope="col">Deskripsi</th>
-              <th scope="col">Pengusul</th>
-              <th scope="col">Tanggal Diajukan</th>
-              <?php if (session('roles') == 'user') : ?>
-              <th scope="col">Status</th>
-              <?php endif; ?>
-              <th scope="col">Aksi</th>
-
-            </tr>
-          </thead>
-          <tbody>
-            <?php $no = 1;
-            foreach ($tb_uks as $tb_uk) : ?>
+        <div class="card-body">
+          <table class="table" id="table-1">
+            <thead>
               <tr style="text-align:center;">
-                <th scope="row"><?= $no++ ?></th>
-                <td><?= $tb_uk['perihal_ks']; ?></td>
-                <td><?= $tb_uk['deskripsi_ks']; ?></td>
-                <td><?= $tb_uk['unit_p_ks']; ?></td>
-                <td><?= $tb_uk['awal_ks']; ?></td>
+                <th scope="col">No</th>
+                <th scope="col">Perihal Kerjasama </th>
+                <th scope="col">Deskripsi</th>
+                <th scope="col">Pengusul</th>
+                <th scope="col">Tanggal Diajukan</th>
                 <?php if (session('roles') == 'user') : ?>
-                <td>
-                <?php if ($tb_uk['status'] == 'verif') : ?>
-                    <span class="badge badge-info">Tunggu</span>
-                  <?php endif; ?>
-                  <?php if ($tb_uk['status'] == 'proses') : ?>
-                    <span class="badge badge-secondary">Proses</span>
-                  <?php endif; ?>
-                  <?php if ($tb_uk['status'] == 'ttd') : ?>
-                    <span class="badge badge-success">Acc</span>
-                  <?php endif; ?>
-                  <?php if ($tb_uk['status'] == 'revisi') : ?>
-                    <span class="badge badge-primary">Revisi</span>
-                  <?php endif; ?>
-                  <?php if ($tb_uk['status'] == 'tolak') : ?>
-                    <span class="badge badge-danger">Tolak</span>
-                  <?php endif; ?>
-                </td>
+                  <th scope="col">Status</th>
                 <?php endif; ?>
-                <td>
-                  <?php if (session('roles') == 'user') : ?>
-                    <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editkategori<?= $tb_uk['id_uk']; ?>">Edit Data</a>
-                  <?php endif; ?>
-                  <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#lihatkategori<?= $tb_uk['id_uk']; ?>">Preview</a>
-                  <?php if (session('roles') == 'admin') : ?>
-                    <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#verifikasi<?= $tb_uk['id_uk']; ?>">Verifikasi</a>
-                  <?php endif; ?>
+                <th scope="col">Aksi</th>
 
-                </td>
               </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <?php $no = 1;
+              foreach ($tb_uks as $tb_uk) : ?>
+                <tr style="text-align:center;">
+                  <th scope="row"><?= $no++ ?></th>
+                  <td><?= $tb_uk['perihal_ks']; ?></td>
+                  <td><?= $tb_uk['deskripsi_ks']; ?></td>
+                  <td><?= $tb_uk['unit_p_ks']; ?></td>
+                  <td><?= $tb_uk['awal_ks']; ?></td>
+                  <?php if (session('roles') == 'user') : ?>
+                    <td>
+                      <?php if ($tb_uk['status'] == 'verif') : ?>
+                        <span class="badge badge-info">Tunggu</span>
+                      <?php endif; ?>
+                      <?php if ($tb_uk['status'] == 'proses') : ?>
+                        <span class="badge badge-secondary">Proses</span>
+                      <?php endif; ?>
+                      <?php if ($tb_uk['status'] == 'ttd') : ?>
+                        <span class="badge badge-success">Acc</span>
+                      <?php endif; ?>
+                      <?php if ($tb_uk['status'] == 'revisi') : ?>
+                        <span class="badge badge-primary">Revisi</span>
+                      <?php endif; ?>
+                      <?php if ($tb_uk['status'] == 'tolak') : ?>
+                        <span class="badge badge-danger">Tolak</span>
+                      <?php endif; ?>
+                    </td>
+                  <?php endif; ?>
+                  <td>
+                    <?php if (session('roles') == 'user') : ?>
+                      <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editkategori<?= $tb_uk['id_uk']; ?>">Edit Data</a>
+                    <?php endif; ?>
+                    <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#lihatkategori<?= $tb_uk['id_uk']; ?>">Preview</a>
+                    <?php if (session('roles') == 'admin') : ?>
+                      <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#verifikasi<?= $tb_uk['id_uk']; ?>">Verifikasi</a>
+                    <?php endif; ?>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
 
+
+        </div>
       </div>
     </div>
   </div>

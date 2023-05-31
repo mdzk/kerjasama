@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 30, 2023 at 07:30 AM
+-- Generation Time: May 31, 2023 at 11:31 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -77,7 +77,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_users`, `foto`, `nik`, `nm_instansi`, `email`, `no_hp`, `provinsi`, `kota`, `password`, `roles`, `status`) VALUES
 (28, '1685418627_fbd776b53b3b22c61f35.jpg', '000', 'Politeknik Negeri Lampung', 'polinela@gmail.com', '00000', 'lampung', 'Lampung Timur', '$2y$10$qOlgd2orzzD13yl5AdzeZeVMemUBSW9L7NYS0nN5yiNmYGOha26GO', 'admin', 0),
 (45, '1683728691_def538db450bb6f20d09.png', '111', 'Universitas Lampung', 'qisedaj@mailinator.com', '+1 (278) 674-5747', 'Recusandae Ea quia ', 'Enim rerum eos ut d', '$2y$10$iuu0JTocdI1tkE7emlVgDuoBP9fqgqBWrihtVErtOLf.AvDx2OPee', 'user', 0),
-(48, '1685416091_5ebd2571cf5670a11789.png', '222', 'Institut Teknologi Bandung', 'tejolacoho@mailinator.com', '+1 (296) 597-26977', 'Libero eos possimus', 'Duis sed cupiditate', '$2y$10$fRZtXE5mhnatl6xZ1PdPguRGpDmcva3urDTtTUXGitkSC360PBT5W', 'pimpinan', 0);
+(48, '1685416091_5ebd2571cf5670a11789.png', '222', 'Institut Teknologi Bandung', 'tejolacoho@mailinator.com', '+1 (296) 597-26977', 'Libero eos possimus', 'Duis sed cupiditate', '$2y$10$fRZtXE5mhnatl6xZ1PdPguRGpDmcva3urDTtTUXGitkSC360PBT5W', 'pimpinan', 0),
+(66, '1685465920_c1dee23da4b36d75ebed.jpg', '444', 'Darma Wacana', '444@mail.com', '444', 'Lampung', 'Metro', '$2y$10$kvShm4RwoldAQk4/R0w5F.OpdmHorRWpy0ZAiWDPiTIoo.oOLo8MW', 'user', 2);
 
 --
 -- Indexes for dumped tables
@@ -105,13 +106,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_uks`
 --
 ALTER TABLE `tb_uks`
-  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

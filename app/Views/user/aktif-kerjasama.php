@@ -18,31 +18,34 @@
         <div class="card-header">
           <h4>Daftar Kerjasama Sedang Aktif</h4>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">No</th>
-              <th scope="col">Perihal Kerjasama </th>
-              <th scope="col">Deskripsi</th>
-              <th scope="col">Pengusul</th>
-              <th scope="col">Tanggal Diajukan</th>
-              <th scope="col">Tanggal Berakhir</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php $no = 1;
-            foreach ($tb_uks as $tb_uk) : ?>
-              <tr>
-                <th scope="row"><?= $no++ ?></th>
-                <td><?= $tb_uk['perihal_ks']; ?></td>
-                <td><?= $tb_uk['deskripsi_ks']; ?></td>
-                <td><?= $tb_uk['unit_p_ks']; ?></td>
-                <td><?= $tb_uk['awal_ks']; ?></td>
-                <td><?= $tb_uk['akhir_ks']; ?></span></td>
-              </tr>
-            <?php endforeach; ?>
 
-        </table>
+        <div class="card-body">
+          <table class="table" id="table-1">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Perihal Kerjasama </th>
+                <th scope="col">Deskripsi</th>
+                <th scope="col">Pengusul</th>
+                <th scope="col">Tanggal Diajukan</th>
+                <th scope="col">Tanggal Berakhir</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php $no = 1;
+              foreach ($tb_uks as $tb_uk) : ?>
+                <tr>
+                  <th scope="row"><?= $no++ ?></th>
+                  <td><?= $tb_uk['perihal_ks']; ?></td>
+                  <td><?= $tb_uk['deskripsi_ks']; ?></td>
+                  <td><?= $tb_uk['unit_p_ks']; ?></td>
+                  <td><?= $tb_uk['awal_ks']; ?></td>
+                  <td><?= $tb_uk['akhir_ks']; ?></span></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
 
       </div>
     </div>

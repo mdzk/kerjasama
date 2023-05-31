@@ -20,41 +20,40 @@
                     <h4>Akun Pengguna</h4>
                 </div>
 
-                <table class="table">
-                    <thead>
-                        <tr style="text-align:center;">
-                            <th>No</th>
-                            <th>Nik</th>
-                            <th>Nama Instansi</th>
-                            <th>Email</th>
-                            <th>No Hp</th>
-                            <th>Roles</th>
-                            <th>Aksi</th>
+                <div class="card-body">
+                    <table class="table" id="table-1">
+                        <thead>
+                            <tr style="text-align:center;">
+                                <th>No</th>
+                                <th>Nik</th>
+                                <th>Nama Instansi</th>
+                                <th>Email</th>
+                                <th>No Hp</th>
+                                <th>Roles</th>
+                                <th>Aksi</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1;
-                        foreach ($users as $user) : ?>
-                            <tr>
-                                <th scope="row"><?= $no++ ?></th>
-                                <td><?= $user['nik']; ?></td>
-                                <td><?= $user['nm_instansi']; ?></td>
-                                <td><?= $user['email']; ?></td>
-                                <td><?= $user['no_hp']; ?></td>
-                                <td><?= $user['roles']; ?></td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editakun<?= $user['id_users']; ?>">Edit</a>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapususer<?= $user['id_users']; ?>">Hapus</button>
-
-                                </td>
                             </tr>
-                        <?php endforeach; ?>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1;
+                            foreach ($users as $user) : ?>
+                                <tr>
+                                    <th scope="row"><?= $no++ ?></th>
+                                    <td><?= $user['nik']; ?></td>
+                                    <td><?= $user['nm_instansi']; ?></td>
+                                    <td><?= $user['email']; ?></td>
+                                    <td><?= $user['no_hp']; ?></td>
+                                    <td><?= $user['roles']; ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editakun<?= $user['id_users']; ?>">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapususer<?= $user['id_users']; ?>">Hapus</button>
 
-                    </tbody>
-
-                </table>
-
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

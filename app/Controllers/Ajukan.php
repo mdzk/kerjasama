@@ -102,7 +102,7 @@ class Ajukan extends BaseController
             ],
 
         ])) {
-            $usulan->save([
+            $data = [
                 'perihal_ks' => $this->request->getVar('perihal_ks'),
                 'awal_ks' => $this->request->getVar('awal_ks'),
                 'akhir_ks' => $this->request->getVar('akhir_ks'),
@@ -115,10 +115,27 @@ class Ajukan extends BaseController
                 'file_input_dk' => $fileName1,
                 'status' => 'verif',
                 'id_users' => session()->get('id_users')
-            ]);
+            ];
+            $usulan->save($data);
 
             $dataBerkas->move('pdf/', $fileName);
             $dataBerkas1->move('pdf/', $fileName1);
+
+            $userModel = new Model_Auth();
+            $dataUser = $userModel->find(session()->get('id_users'));
+
+            $email = \Config\Services::email();
+            $userModel = new Model_Auth();
+            $adminEmails = $userModel->where('roles', 'admin')->findAll();
+            $message = view('email-ajukan', $data);
+
+            foreach ($adminEmails as $adminEmail) {
+                $email->clear();
+                $email->setTo($adminEmail['email']);
+                $email->setSubject($dataUser['nm_instansi'] . ' Mengajukan Kerjasama Baru!');
+                $email->setMessage($message);
+                $email->send();
+            }
 
             session()->setFlashdata('pesan', 'Data telah diajukan');
             return redirect()->to('usulan');

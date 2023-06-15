@@ -42,6 +42,7 @@ $routes->post('/usulan/lihat', 'Usulan::lihat', ['as' => 'usulan-lihat', 'filter
 $routes->post('/usulan/update', 'Usulan::update', ['as' => 'usulan-update', 'filter' => 'auth']);
 $routes->post('/usulan/verif', 'Usulan::usulanVerif', ['as' => 'verif-usulan-sekarang', 'filter' => 'auth:admin']);
 $routes->get('/aktif-kerjasama', 'Aktif::index', ['filter' => 'auth']);
+$routes->get('/kerjasama-berakhir', 'Aktif::tidakAktif', ['filter' => 'auth']);
 
 //ajukan
 $routes->get('/ajukan', 'Ajukan::index', ['filter' => 'auth']);
@@ -84,9 +85,16 @@ $routes->post('/auth/add', 'Auth::add', ['as' => 'auth-add']);
 
 // Authentication Section
 $routes->get('/login', 'Auth::index');
+$routes->get('/forgot', 'ForgotPassword::index');
+$routes->post('/forgot-password', 'ForgotPassword::forgotPassword', ['as' => 'forgot-password']);
+$routes->get('/reset-password/(:segment)', 'ForgotPassword::resetPassword/$1', ['as' => 'reset-password']);
+$routes->post('/update-password', 'ForgotPassword::updatePassword', ['as' => 'update-password']);
 $routes->post('/login', 'Auth::auth', ['as' => 'auth']);
 $routes->get('/logout', 'Auth::logout', ['as' => 'logout']);
 
+$routes->get('/email', function () {
+    echo view('email-ajukan');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

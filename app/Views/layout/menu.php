@@ -9,17 +9,39 @@
 
     <li class="menu-header">Kerjasama</li>
 
+    <li class="<?= get_url(1, 'ajukan') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= site_url('ajukan') ?>">
+            <i class="far fa-file"></i>
+            <span>Ajukan Kerjasama</span>
+        </a>
+    </li>
+
     <li class="<?= get_url(1, 'usulan') ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= site_url('usulan') ?>">
             <i class="far fa-file-alt"></i>
             <span>Usulan Kerjasama</span>
         </a>
     </li>
+
+    <li class="<?= get_url(1, 'aktif-kerjasama') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= site_url('aktif-kerjasama') ?>">
+            <i class="far fa-bookmark"></i>
+            <span>Kerjasama Aktif</span>
+        </a>
+    </li>
+
+    <li class=" <?= get_url(1, 'kerjasama-berakhir') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= site_url('kerjasama-berakhir') ?>">
+            <i class="far fa-folder"></i>
+            <span>Kerjasama Tidak Aktif</span>
+        </a>
+    </li>
 <?php endif; ?>
 
 <?php if (session('roles') == 'admin') : ?>
 
-    <li class="menu-header">Kerjasama</li>
+    <li class=" menu-header">Kerjasama
+    </li>
 
     <li class="<?= get_url(1, 'usulan') ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= site_url('usulan') ?>">

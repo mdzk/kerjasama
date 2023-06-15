@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash;Ajuin Kerjasama</title>
+    <title>Lupa Password &mdash;Ajuin Kerjasama</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -26,7 +26,7 @@
                         </div>
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h4>Login</h4>
+                                <h4>Password Baru!</h4>
                             </div>
                             <div class="card-body">
                                 <?php if (session()->getFlashdata('msg')) : ?>
@@ -35,34 +35,23 @@
                                 <?php if (session()->getFlashdata('sukses')) : ?>
                                     <div class="alert alert-success"><?= session()->getFlashdata('sukses') ?></div>
                                 <?php endif; ?>
-                                <form action="<?= route_to('auth'); ?>" method="POST" class="needs-validation" novalidate="">
+                                <form action="<?= route_to('update-password'); ?>" method="POST" class="needs-validation" novalidate="">
+                                    <input type="hidden" name="token" value="<?= $token ?>">
                                     <div class="form-group">
-                                        <label for="text">Nik</label>
-                                        <input type="text" class="form-control" name="nik" required autofocus>
-                                        <div class="invalid-feedback">
-                                            Silahkan masukkan nik anda
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="text">Password</label>
-                                        <input type="password" class="form-control" name="password" required autofocus>
-                                        <div class="invalid-feedback">
-                                            Silahkan masukkan password anda
-                                        </div>
+                                        <label for="text">Password Baru</label>
+                                        <input type="password" class="form-control" name="password" required autofocus placeholder="Masukkan Password Baru Anda">
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
+                                            Submit
                                         </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="mt-5 text-muted text-center">
-                            Belum memiliki akun? <a href="<?= base_url('/register') ?>">Buat akun</a>
-                            <br> Lupa password? <a href="<?= base_url('/forgot') ?>">Klik di sini</a>
+                            Sudah memiliki akun? <a href="<?= base_url('/login') ?>">Masuk di sini</a>
                         </div>
                         <div class="simple-footer">
                             Copyright &copy; Ajuin Kerjasama 2023

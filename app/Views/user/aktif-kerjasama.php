@@ -4,10 +4,10 @@
 
 <section class="section">
   <div class="section-header">
-    <h1>Kerjasama Aktif</h1>
+    <h1>Kerjasama <?= get_url(1, 'aktif-kerjasama') ? 'Aktif' : 'Tidak Aktif'; ?></h1>
     <div class="section-header-breadcrumb">
       <div class="breadcrumb-item"><a href="<?= base_url(); ?>home">Dashboard</a></div>
-      <div class="breadcrumb-item">Kerjasama Aktif</div>
+      <div class="breadcrumb-item">Kerjasama <?= get_url(1, 'aktif-kerjasama') ? 'Aktif' : 'Tidak Aktif'; ?></div>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4>Daftar Kerjasama Sedang Aktif</h4>
+          <h4>Daftar Kerjasama <?= get_url(1, 'aktif-kerjasama') ? 'Aktif' : 'Tidak Aktif'; ?></h4>
         </div>
 
         <div class="card-body">

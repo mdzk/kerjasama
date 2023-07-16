@@ -22,20 +22,6 @@
             <span>Usulan Kerjasama</span>
         </a>
     </li>
-
-    <li class="<?= get_url(1, 'aktif-kerjasama') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= site_url('aktif-kerjasama') ?>">
-            <i class="far fa-bookmark"></i>
-            <span>Kerjasama Aktif</span>
-        </a>
-    </li>
-
-    <li class=" <?= get_url(1, 'kerjasama-berakhir') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= site_url('kerjasama-berakhir') ?>">
-            <i class="far fa-folder"></i>
-            <span>Kerjasama Tidak Aktif</span>
-        </a>
-    </li>
 <?php endif; ?>
 
 <?php if (session('roles') == 'admin') : ?>
@@ -60,10 +46,17 @@
             <span>Daftar Kerjasama</span>
         </a>
     </li>
-    <li class="<?= get_url(1, 'akhir-kerjasama') ? 'active' : ''; ?>">
-        <a class="nav-link" href="<?= site_url('akhir-kerjasama') ?>">
-            <i class="far fa-clock"></i>
-            <span>Kerjasama Berakhir</span>
+    <li class="<?= get_url(1, 'aktif-kerjasama') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= site_url('aktif-kerjasama') ?>">
+            <i class="far fa-bookmark"></i>
+            <span>Kerjasama Aktif</span>
+        </a>
+    </li>
+
+    <li class=" <?= get_url(1, 'kerjasama-berakhir') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= site_url('kerjasama-berakhir') ?>">
+            <i class="far fa-folder"></i>
+            <span>Kerjasama Tidak Aktif</span>
         </a>
     </li>
 <?php endif; ?>

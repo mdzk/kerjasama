@@ -15,7 +15,7 @@ class Aktif extends BaseController
 
         $data = [
             'user'  => $user->find(session()->get('id_users')),
-            'tb_uks' => $tb_uk->where('status', 'ttd')->where('id_users', session()->get('id_users'))->where('akhir_ks >=', date('Y-m-d'))->findAll(),
+            'tb_uks' => $tb_uk->where('status', 'ttd')->where('akhir_ks >=', date('Y-m-d'))->findAll(),
         ];
         return view('user/aktif-kerjasama', $data);
     }
@@ -27,7 +27,7 @@ class Aktif extends BaseController
 
         $data = [
             'user'  => $user->find(session()->get('id_users')),
-            'tb_uks' => $tb_uk->where('status', 'ttd')->where('id_users', session()->get('id_users'))->where('akhir_ks <=', date('Y-m-d'))->findAll(),
+            'tb_uks' => $tb_uk->where('status', 'ttd')->where('akhir_ks <=', date('Y-m-d'))->findAll(),
         ];
         return view('user/aktif-kerjasama', $data);
     }

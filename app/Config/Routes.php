@@ -41,8 +41,10 @@ $routes->post('/usulan/add', 'Usulan::add', ['as' => 'usulan-add']);
 $routes->post('/usulan/lihat', 'Usulan::lihat', ['as' => 'usulan-lihat', 'filter' => 'auth']);
 $routes->post('/usulan/update', 'Usulan::update', ['as' => 'usulan-update', 'filter' => 'auth']);
 $routes->post('/usulan/verif', 'Usulan::usulanVerif', ['as' => 'verif-usulan-sekarang', 'filter' => 'auth:admin']);
-$routes->get('/aktif-kerjasama', 'Aktif::index', ['filter' => 'auth']);
-$routes->get('/kerjasama-berakhir', 'Aktif::tidakAktif', ['filter' => 'auth']);
+$routes->post('/usulan/revisi', 'Usulan::usulanRevisi', ['as' => 'usulan-revisi', 'filter' => 'auth:admin']);
+
+$routes->get('/aktif-kerjasama', 'Aktif::index', ['filter' => 'auth:pimpinan']);
+$routes->get('/kerjasama-berakhir', 'Aktif::tidakAktif', ['filter' => 'auth:pimpinan']);
 
 //ajukan
 $routes->get('/ajukan', 'Ajukan::index', ['filter' => 'auth']);
@@ -53,6 +55,7 @@ $routes->get('/kerjasama', 'Kerjasama::index', ['filter' => 'auth:pimpinan']);
 $routes->get('/kerjasama/history', 'Kerjasama::history', ['as' => 'kerjasama-history', 'filter' => 'auth']);
 $routes->post('/kerjasama/lihat', 'Kerjasama::lihat', ['as' => 'kerjasama-lihat', 'filter' => 'auth']);
 $routes->post('/kerjasama/update', 'Kerjasama::update', ['as' => 'kerjasama-update', 'filter' => 'auth']);
+$routes->post('/kerjasama/delete', 'Kerjasama::delete', ['as' => 'kerjasama-hapus', 'filter' => 'auth']);
 
 $routes->post('/kerjasama/acc', 'Kerjasama::kerjasamaVerifAcc', ['as' => 'verif-kerjasama-sekarang-acc', 'filter' => 'auth:pimpinan']);
 $routes->post('/kerjasama/tolak', 'Kerjasama::kerjasamaVerifTolak', ['as' => 'verif-kerjasama-sekarang-tolak', 'filter' => 'auth:pimpinan']);

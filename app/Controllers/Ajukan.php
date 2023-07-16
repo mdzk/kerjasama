@@ -102,6 +102,40 @@ class Ajukan extends BaseController
             ],
 
         ])) {
+
+
+            $cekKerjasamaVerif  = $usulan->where('perihal_ks', $this->request->getVar('perihal_ks'))
+                ->where('id_users', session('id_users'))
+                ->where('status', 'verif')
+                ->first();
+            $cekKerjasamaProses  = $usulan->where('perihal_ks', $this->request->getVar('perihal_ks'))
+                ->where('id_users', session('id_users'))
+                ->where('status', 'proses')
+                ->first();
+            $cekKerjasamaRevisi  = $usulan->where('perihal_ks', $this->request->getVar('perihal_ks'))
+                ->where('id_users', session('id_users'))
+                ->where('status', 'revisi')
+                ->first();
+            $cekKerjasamaRevisiAdmin  = $usulan->where('perihal_ks', $this->request->getVar('perihal_ks'))
+                ->where('id_users', session('id_users'))
+                ->where('status', 'revisiadmin')
+                ->first();
+
+            if ($cekKerjasamaVerif !== NULL || $cekKerjasamaProses !== NULL || $cekKerjasamaRevisi !== NULL || $cekKerjasamaRevisiAdmin) {
+                Session()->setFlashdata('errors', ['perihal_ks' => 'Selesaikan Prihal Kerja Sama yang sudah diajukan']);
+                return redirect()->back()->withInput();
+            }
+
+            $cekKerjasama  = $usulan->where('perihal_ks', $this->request->getVar('perihal_ks'))
+                ->where('id_users', session('id_users'))->first();
+
+            if (
+                $cekKerjasama !== NULL
+            ) {
+                Session()->setFlashdata('errors', ['perihal_ks' => 'Prihal Kerja Sama sudah terdaftar, ganti Prihal Kerja Sama yang lain!']);
+                return redirect()->back()->withInput();
+            }
+
             $data = [
                 'perihal_ks' => $this->request->getVar('perihal_ks'),
                 'awal_ks' => $this->request->getVar('awal_ks'),

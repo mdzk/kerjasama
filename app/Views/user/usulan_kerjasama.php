@@ -28,6 +28,7 @@
                 <th scope="col">Tanggal Diajukan</th>
                 <?php if (session('roles') == 'user') : ?>
                   <th scope="col">Status</th>
+
                 <?php endif; ?>
                 <th scope="col">Aksi</th>
 
@@ -53,21 +54,33 @@
                       <?php if ($tb_uk['status'] == 'ttd') : ?>
                         <span class="badge badge-success">Acc</span>
                       <?php endif; ?>
-                      <?php if ($tb_uk['status'] == 'revisi') : ?>
-                        <span class="badge badge-primary">Revisi</span>
+                      <?php if ($tb_uk['status'] == 'revisi' || $tb_uk['status'] == 'revisiadmin') : ?>
+                        <span class="badge badge-primary">Revisi</span> <br>
+                        <?php if ($tb_uk['keterangan'] !== NULL) : ?>
+                          <span>Keterangan:</span><br>
+                          <?= $tb_uk['keterangan']; ?>
+                        <?php endif; ?>
                       <?php endif; ?>
                       <?php if ($tb_uk['status'] == 'tolak') : ?>
                         <span class="badge badge-danger">Tolak</span>
                       <?php endif; ?>
                     </td>
+
                   <?php endif; ?>
                   <td>
                     <?php if (session('roles') == 'user') : ?>
-                      <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editkategori<?= $tb_uk['id_uk']; ?>">Edit Data</a>
+                      <?php if ($tb_uk['status'] == 'revisi' || $tb_uk['status'] == 'revisiadmin') : ?>
+                        <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editkategori<?= $tb_uk['id_uk']; ?>">Edit Data</a>
+                      <?php endif; ?>
+                      <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $tb_uk['id_uk']; ?>">Delete</a>
                     <?php endif; ?>
                     <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#lihatkategori<?= $tb_uk['id_uk']; ?>">Preview</a>
                     <?php if (session('roles') == 'admin') : ?>
                       <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#verifikasi<?= $tb_uk['id_uk']; ?>">Verifikasi</a>
+                      <?php if ($tb_uk['keterangan'] == NULL && $tb_uk['status'] == 'verif') : ?>
+                        <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#revisi<?= $tb_uk['id_uk']; ?>">Revisi</a>
+                      <?php endif; ?>
+
                     <?php endif; ?>
                   </td>
                 </tr>
@@ -263,6 +276,7 @@
   </div>
 
   <!-- verivikasi modal -->
+  <!-- Verifikasi Modal -->
   <div class="modal fade text-left modal-borderless" id="verifikasi<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content">
@@ -293,7 +307,77 @@
       </div>
     </div>
   </div>
+  <!-- End Verifikasi Modal -->
 
+  <!-- Revisi Modal -->
+  <div class="modal fade text-left modal-borderless" id="revisi<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Revisi Usulan Kerjasama</h5>
+          <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+
+        <form action="<?= route_to('usulan-revisi'); ?>" method="POST">
+          <div class="modal-body">
+            <p>
+            <div class="form-group">
+              <label for="">Keterangan</label>
+              <input name="keterangan" class="form-control" type="text">
+            </div>
+            </p>
+
+            <input type="text" value="<?= $tb_uk['id_uk']; ?>" name="id_uk" hidden>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light-primary ml-1" data-bs-dismiss="modal">
+              <span class="d-sm-block">Tutup</span>
+            </button>
+            <button type="submit" name="submit" class="btn btn-primary" data-bs-dismiss="modal">
+              <span class="d-sm-block">Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Revisi Modal -->
+
+  <!-- delete acc modal -->
+  <div class="modal fade text-left modal-borderless" id="delete<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Hapus Kerjasama</h5>
+          <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+
+        <form action="<?= route_to('kerjasama-hapus'); ?>" method="POST">
+          <div class="modal-body">
+            <p>
+              Apakah anda yakin ingin mengahapus usulan kerjasama ini?
+            </p>
+
+            <input type="text" value="<?= $tb_uk['id_uk']; ?>" name="id_uk" hidden>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light-primary ml-1" data-bs-dismiss="modal">
+              <span class="d-sm-block">Tidak</span>
+            </button>
+            <button type="submit" name="submit" class="btn btn-primary" data-bs-dismiss="modal">
+              <span class="d-sm-block">Ya</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </td>
+  <!-- end acc delete -->
   </td>
   <!-- end verivikasi -->
 <?php endforeach; ?>

@@ -54,8 +54,9 @@
                   </td>
                   <td>
                     <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editkategori<?= $tb_uk['id_uk']; ?>">Revisi</a>
-                    <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#acc<?= $tb_uk['id_uk']; ?>">Ttd</a>
+                    <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#acc<?= $tb_uk['id_uk']; ?>">ACC</a>
                     <a href="#" data-href="#" onclick="confirmToDelete(this)" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#tolak<?= $tb_uk['id_uk']; ?>">Tolak</a>
+                    <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $tb_uk['id_uk']; ?>">Delete</a>
                   </td>
                 </tr>
               <?php endforeach; ?>
@@ -226,6 +227,40 @@
   </div>
   </td>
   <!-- end acc verivikasi -->
+
+  <!-- delete acc modal -->
+  <div class="modal fade text-left modal-borderless" id="delete<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Hapus Kerjasama</h5>
+          <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+            <i data-feather="x"></i>
+          </button>
+        </div>
+
+        <form action="<?= route_to('kerjasama-hapus'); ?>" method="POST">
+          <div class="modal-body">
+            <p>
+              Apakah anda yakin ingin mengahapus usulan kerjasama ini?
+            </p>
+
+            <input type="text" value="<?= $tb_uk['id_uk']; ?>" name="id_uk" hidden>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light-primary ml-1" data-bs-dismiss="modal">
+              <span class="d-sm-block">Tidak</span>
+            </button>
+            <button type="submit" name="submit" class="btn btn-primary" data-bs-dismiss="modal">
+              <span class="d-sm-block">Ya</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </td>
+  <!-- end acc delete -->
 
   <!-- verivikasi tolak modal -->
   <div class="modal fade text-left modal-borderless" id="tolak<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">

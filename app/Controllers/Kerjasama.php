@@ -12,7 +12,7 @@ class Kerjasama extends BaseController
     {
         $user       = new Model_Auth();
         $tb_uk = new Model_Usulan();
-        
+
         $data = [
             'user'  => $user->find(session()->get('id_users')),
             'tb_uks' => $tb_uk->where('status !=', 'verif')->findAll(),
@@ -26,13 +26,13 @@ class Kerjasama extends BaseController
         $tb_uk->replace([
             'id_uk' => $this->request->getPost('id_uk'),
             'perihal_ks' => $this->request->getPost('perihal_ks'),
-            'awal_ks' =>$this->request->getVar('awal_ks'),
+            'awal_ks' => $this->request->getVar('awal_ks'),
             'akhir_ks' => $this->request->getVar('akhir_ks'),
             'bentuk_kegiatan' => $this->request->getVar('bentuk_kegiatan'),
             'unit_p_ks' => $this->request->getVar('unit_p_ks'),
             'deskripsi_ks' => $this->request->getVar('deskripsi_ks'),
             'jenis_dokumen' => $this->request->getVar('jenis_dokumen'),
-            'rancangan_ik' =>$this->request->getVar('rancangan_ik'),
+            'rancangan_ik' => $this->request->getVar('rancangan_ik'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diedit');
         return redirect()->to('user/kerjasama');
@@ -76,5 +76,15 @@ class Kerjasama extends BaseController
         $tb_uk->update($this->request->getPost('id_uk'), $data);
         return redirect()->to('kerjasama');
     }
-    
+
+    public function delete()
+    {
+        $kerjasama = new Model_Usulan();
+        $data = $kerjasama->find($this->request->getVar('id_uk'));
+        unlink('pdf/' . $data['file_input_pk']);
+        unlink('pdf/' . $data['file_input_dk']);
+        $kerjasama->delete($this->request->getVar('id_uk'));
+        session()->setFlashdata('pesan', 'Kerjasama berhasil dihapus');
+        return redirect()->to('kerjasama');
+    }
 }

@@ -17,8 +17,8 @@ class Usulan extends BaseController
         if (session()->get('roles') == 'admin') {
             $data = [
                 'user'  => $user->find(session()->get('id_users')),
-                'tb_uks' => $tb_uk->where('status','verif')->findAll(),
-                
+                'tb_uks' => $tb_uk->where('status', 'verif')->findAll(),
+
             ];
             return view('user/usulan_kerjasama', $data);
         } else {
@@ -30,7 +30,6 @@ class Usulan extends BaseController
             ];
             return view('user/usulan_kerjasama', $data);
         }
-
     }
 
     public function update()
@@ -56,6 +55,15 @@ class Usulan extends BaseController
             $thumbnail->move('pdf', $fileName1);
             unlink('pdf/' . $data['file_input_dk']);
         }
+
+        if ($data['status'] == 'revisiadmin') {
+            $status = 'verif';
+        }
+
+        if ($data['status'] == 'revisi') {
+            $status = 'proses';
+        }
+
         $tb_uk->replace([
             'id_uk' => $this->request->getPost('id_uk'),
             'perihal_ks' => $this->request->getPost('perihal_ks'),
@@ -68,7 +76,8 @@ class Usulan extends BaseController
             'rancangan_ik' => $this->request->getVar('rancangan_ik'),
             'file_input_pk' => $fileName,
             'file_input_dk' => $fileName1,
-            'status' => 'proses',
+            'status' => $status,
+            'keterangan' => NULL,
             'id_users' => session()->get('id_users'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diedit');
@@ -106,5 +115,21 @@ class Usulan extends BaseController
 
         $tb_uk->update($this->request->getPost('id_uk'), $data);
         return redirect()->to('usulan');
+    }
+
+    public function usulanRevisi()
+    {
+        $tb_uk = new Model_Usulan();
+        $data = $tb_uk->find($this->request->getVar('id_uk'));
+        $data = [
+            'status' => 'revisiadmin',
+            'keterangan' => $this->request->getVar('keterangan'),
+        ];
+        $tb_uk->set($data)
+            ->where('id_uk', $this->request->getVar('id_uk'))
+            ->update();
+
+        session()->setFlashdata('pesan', 'Usulan Kerja Sama Telah Diajukan Revisi');
+        return redirect()->back();
     }
 }

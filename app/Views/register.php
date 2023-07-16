@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group col-6">
                       <label for="last_name">Nomor Induk Keluarga(NIK)</label>
-                      <input id="nik" type="text" class="form-control" name="nik">
+                      <input id="nik" class="form-control" name="nik" type="number" maxlength="16" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);this.value = this.value.replace(/[^0-9]/g, '')" placeholder="18720202020001">
                     </div>
                   </div>
 

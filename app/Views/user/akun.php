@@ -20,6 +20,17 @@
                     <h4>Akun Pengguna</h4>
                 </div>
 
+                <?php $errors = session()->getFlashdata('errors');
+                if (!empty($errors)) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <?php foreach ($errors as $error) : ?>
+                                <li><?= esc($error) ?></li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+
                 <div class="card-body">
                     <table class="table" id="table-1">
                         <thead>
@@ -106,7 +117,7 @@
                             </div>
                             <div class="form-group col-6">
                                 <label for="last_name">Nik</label>
-                                <input id="nik" type="text" class="form-control" name="nik">
+                                <input id="nik" class="form-control" name="nik" type="number" maxlength="16" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);this.value = this.value.replace(/[^0-9]/g, '')" placeholder="18720202020001">
                             </div>
                         </div>
 
@@ -235,7 +246,7 @@
 
                         <div class="form-group">
                             <label for="basicInput">NIK</label>
-                            <input type="text" name="nik" value="<?= $user['nik'] ?>" class="form-control" id="basicInput">
+                            <input type="number" maxlength="16" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);this.value = this.value.replace(/[^0-9]/g, '')" name="nik" value="<?= $user['nik'] ?>" class="form-control" id="basicInput">
                         </div>
                         <div class="form-group">
                             <label for="basicInput">Nama Instansi</label>

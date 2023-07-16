@@ -37,10 +37,10 @@
                                 <?php endif; ?>
                                 <form action="<?= route_to('auth'); ?>" method="POST" class="needs-validation" novalidate="">
                                     <div class="form-group">
-                                        <label for="text">Nik</label>
-                                        <input type="text" class="form-control" name="nik" required autofocus>
+                                        <label for="text">Email</label>
+                                        <input type="text" class="form-control" name="email" required autofocus>
                                         <div class="invalid-feedback">
-                                            Silahkan masukkan nik anda
+                                            Silahkan masukkan Email anda
                                         </div>
                                     </div>
 

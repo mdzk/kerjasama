@@ -26,11 +26,12 @@ class Akun extends BaseController
         if ($this->validate([
             'nik' => [
                 'label' => 'Nik',
-                'rules' => 'required|is_unique[users.nik]',
+                'rules' => "required|is_unique[users.nik]|min_length[16]|max_length[16]",
                 'errors' => [
                     'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! ',
                     'is_unique' => 'NIK sudah digunakan. Mohon masukkan NIK yang berbeda.',
-
+                    'min_length' => 'Minimal {field} 16 Angka',
+                    'max_length' => 'Maksimal {field} 16 Angka',
                 ]
             ],
             'nm_instansi' => [
@@ -42,9 +43,10 @@ class Akun extends BaseController
             ],
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required',
+                'rules' => 'required|is_unique[users.email]',
                 'errors' => [
-                    'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! '
+                    'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! ',
+                    'is_unique' => '{field} sudah digunakan. Mohon masukkan {field} yang berbeda.'
                 ]
             ],
             'no_hp' => [
@@ -153,7 +155,7 @@ class Akun extends BaseController
     {
         $user = new Model_Auth();
         $data = $user->find($this->request->getVar('id_users'));
-
+        $id        = $this->request->getVar('id_users');
         $thumbnail = $this->request->getFile('foto');
         if ($thumbnail == '') {
             $thumbnailName = $data['foto'];
@@ -162,20 +164,45 @@ class Akun extends BaseController
             $thumbnail->move('img', $thumbnailName);
         }
 
-        $user->replace([
-            'id_users' => $this->request->getVar('id_users'),
-            'foto' => $thumbnailName,
-            'nik' => $this->request->getVar('nik') ? $this->request->getVar('nik') : $data['nik'],
-            'nm_instansi' => $this->request->getVar('nm_instansi') ? $this->request->getVar('nm_instansi') : $data['nm_instansi'],
-            'email' => $this->request->getVar('email') ? $this->request->getVar('email') : $data['email'],
-            'no_hp' => $this->request->getVar('no_hp') ? $this->request->getVar('no_hp') : $data['no_hp'],
-            'provinsi' => $this->request->getVar('provinsi') ? $this->request->getVar('provinsi') : $data['provinsi'],
-            'kota' => $this->request->getVar('kota') ? $this->request->getVar('kota') : $data['kota'],
-            'roles' => $this->request->getVar('roles') ? $this->request->getVar('roles') : $data['roles'],
-            'password' => empty($this->request->getVar('password')) ? $data['password'] : password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-        ]);
+        if ($this->validate([
+            'nik' => [
+                'label' => 'Nik',
+                'rules' => "required|is_unique[users.nik, id_users, $id]|min_length[16]|max_length[16]",
+                'errors' => [
+                    'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! ',
+                    'is_unique' => 'NIK sudah digunakan. Mohon masukkan NIK yang berbeda.',
+                    'min_length' => 'Minimal {field} 16 Angka',
+                    'max_length' => 'Maksimal {field} 16 Angka',
+                ]
+            ],
+            'email' => [
+                'label' => 'Email',
+                'rules' => "required|is_unique[users.email, id_users, $id]",
+                'errors' => [
+                    'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! ',
+                    'is_unique' => '{field} sudah digunakan. Mohon masukkan {field} yang berbeda.'
+                ]
+            ]
+        ])) {
 
-        session()->setFlashdata('pesan', 'Data berhasil diedit');
-        return redirect()->to('akun');
+            $user->replace([
+                'id_users' => $this->request->getVar('id_users'),
+                'foto' => $thumbnailName,
+                'nik' => $this->request->getVar('nik') ? $this->request->getVar('nik') : $data['nik'],
+                'nm_instansi' => $this->request->getVar('nm_instansi') ? $this->request->getVar('nm_instansi') : $data['nm_instansi'],
+                'email' => $this->request->getVar('email') ? $this->request->getVar('email') : $data['email'],
+                'no_hp' => $this->request->getVar('no_hp') ? $this->request->getVar('no_hp') : $data['no_hp'],
+                'provinsi' => $this->request->getVar('provinsi') ? $this->request->getVar('provinsi') : $data['provinsi'],
+                'kota' => $this->request->getVar('kota') ? $this->request->getVar('kota') : $data['kota'],
+                'roles' => $this->request->getVar('roles') ? $this->request->getVar('roles') : $data['roles'],
+                'password' => empty($this->request->getVar('password')) ? $data['password'] : password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            ]);
+
+            session()->setFlashdata('pesan', 'Akun berhasil diedit');
+            return redirect()->to('akun');
+        } else {
+            session()->setFlashdata('errors', \Config\Services::validation()->getErrors());
+            return redirect()->to('akun');
+        }
     }
 }

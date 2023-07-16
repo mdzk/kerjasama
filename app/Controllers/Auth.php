@@ -17,10 +17,10 @@ class Auth extends BaseController
     {
         $session  = session();
         $model    = new Model_Auth();
-        $nik = $this->request->getVar('nik');
+        $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
         $status = $this->request->getVar('status');
-        $data = $model->where('nik', $nik)->first();
+        $data = $model->where('email', $email)->first();
         if ($data) {
             $pass = $data['password'];
             $verify_pass = password_verify($password, $pass);
@@ -28,7 +28,7 @@ class Auth extends BaseController
                 if ($verify_pass) {
                     $ses_data = [
                         'id_users'   => $data['id_users'],
-                        'nik'  => $data['nik'],
+                        'email'  => $data['email'],
                         'status' => 0,
                         'logged_in' => TRUE,
                         'roles' => $data['roles']
@@ -44,7 +44,7 @@ class Auth extends BaseController
                 return redirect()->to('/login');
             }
         } else {
-            $session->setFlashdata('msg', 'Nik Tidak Ditemukan');
+            $session->setFlashdata('msg', 'email Tidak Ditemukan');
             return redirect()->to('/login');
         }
     }
@@ -73,11 +73,12 @@ class Auth extends BaseController
         if ($this->validate([
             'nik' => [
                 'label' => 'Nik',
-                'rules' => 'required|is_unique[users.nik]',
+                'rules' => "required|is_unique[users.nik]|min_length[16]|max_length[16]",
                 'errors' => [
                     'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! ',
                     'is_unique' => 'NIK sudah digunakan. Mohon masukkan NIK yang berbeda.',
-
+                    'min_length' => 'Minimal {field} 16 Angka',
+                    'max_length' => 'Maksimal {field} 16 Angka',
                 ]
             ],
             'nm_instansi' => [
@@ -89,9 +90,10 @@ class Auth extends BaseController
             ],
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required',
+                'rules' => 'required|is_unique[users.email]',
                 'errors' => [
-                    'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! '
+                    'required' => '{field} Wajib Diisi Dan Tidak Boleh Kosong !!! ',
+                    'is_unique' => '{field} sudah digunakan. Mohon masukkan {field} yang berbeda.',
                 ]
             ],
             'no_hp' => [

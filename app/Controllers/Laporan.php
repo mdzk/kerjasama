@@ -14,12 +14,26 @@ class Laporan extends BaseController
         $user       = new Model_Auth();
         $tb_uk = new Model_Usulan();
 
-        if (session()->get('roles') == 'admin') {
-            $data = [
-                'user'  => $user->find(session()->get('id_users')),
-                'tb_uks' => $tb_uk->where('status !=', 'verif')->findAll(),
+        $usulanTerlama = $tb_uk->where('status', 'ttd')->where('akhir_ks <=', date('Y-m-d'))->orderBy('created_at', "ASC")->first();
+        $usulanTerbaru = $tb_uk->where('status', 'ttd')->where('akhir_ks <=', date('Y-m-d'))->orderBy('created_at', "DESC")->first();
 
-            ];
+        if (session()->get('roles') == 'admin') {
+
+            if (!empty($usulanTerlama)) {
+                $data = [
+                    'usulan_terbaru' => date('Y', strtotime($usulanTerbaru['created_at'])),
+                    'usulan_lama' => date('Y', strtotime($usulanTerlama['created_at'])),
+                    'user'  => $user->find(session()->get('id_users')),
+                    'tb_uks' => $tb_uk->where('status !=', 'verif')->findAll(),
+                ];
+            } else {
+                $data = [
+                    'usulan_terbaru' => date('Y'),
+                    'usulan_lama' => date('Y'),
+                    'user'  => $user->find(session()->get('id_users')),
+                    'tb_uks' => $tb_uk->where('status !=', 'verif')->findAll(),
+                ];
+            }
             return view('user/laporan', $data);
         } else {
             $data = [
@@ -95,5 +109,4 @@ class Laporan extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diedit');
         return redirect()->to('laporan');
     }
-
 }

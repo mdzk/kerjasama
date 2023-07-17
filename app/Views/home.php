@@ -118,6 +118,20 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Statistics</h4>
+              <div class="card-header-action">
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas id="myChart" style="display: block; width: 644px; height: 390px;" class="chartjs-render-monitor" width="644" height="390"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <?php endif ?>
 

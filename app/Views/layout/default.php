@@ -106,6 +106,7 @@
   <script src="<?= base_url(); ?>/template/assets/js/sweetalert2.min.js"></script>
   <script src="<?= base_url(); ?>/template/assets/js/datatables.min.js"></script>
   <script src="<?= base_url(); ?>/template/assets/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<?= base_url(); ?>/template/assets/js/chart.js"></script>
   <?php if (session()->getFlashdata('pesan')) : ?>
     <script>
       Swal.fire(
@@ -118,6 +119,52 @@
   <script>
     $(document).ready(function() {
       $('#table-1').DataTable();
+    });
+
+    var dataJurnal = $.ajax({
+      url: "<?= base_url() . 'api/terlaksana'; ?>",
+      async: false,
+      dataType: 'json'
+    }).responseJSON;
+
+    var statistics_chart = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(statistics_chart, {
+      type: 'line',
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+        datasets: [{
+          label: 'Statistics',
+          data: [640, 387, 530, 302, 430, 270, 488, 640, 387, 530, 302, 430],
+          borderWidth: 5,
+          borderColor: '#6777ef',
+          backgroundColor: 'transparent',
+          pointBackgroundColor: '#fff',
+          pointBorderColor: '#6777ef',
+          pointRadius: 4
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            gridLines: {
+              display: false,
+              drawBorder: false,
+            },
+            ticks: {
+              stepSize: 150
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              color: '#fbfbfb',
+              lineWidth: 2
+            }
+          }]
+        },
+      }
     });
   </script>
 </body>

@@ -1,6 +1,57 @@
 <?= $this->extend('layout/default') ?>
 <?= $this->section('content') ?>
 
+<!-- Modal Cetak -->
+<div class="modal fade text-left modal-borderless" id="cetak" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cetak Laporan</h5>
+        <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      <form action="<?= route_to('export-laporan'); ?>" method="POST">
+        <div class="modal-body">
+          <div class="form-group mb-3">
+            <label for="name">Pilih Bulan</label>
+            <select name="bulan" class="form-control">
+              <option value="1">Januari</option>
+              <option value="2">Februari</option>
+              <option value="3">Maret</option>
+              <option value="4">April</option>
+              <option value="5">Mei</option>
+              <option value="6">Juni</option>
+              <option value="7">Juli</option>
+              <option value="8">Agustus</option>
+              <option value="9">September</option>
+              <option value="10">Oktober</option>
+              <option value="11">November</option>
+              <option value="12">Desember</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="name">Pilih Tahun</label>
+            <select name="tahun" class="form-control">
+              <?php for ($x = $usulan_lama; $x <= $usulan_terbaru; $x++) : ?>
+                <option name="bulan" value="<?= $x; ?>"><?= $x; ?></option>
+              <?php endfor; ?>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light-primary ml-1" data-bs-dismiss="modal">
+            <span class="d-sm-block">Tutup</span>
+          </button>
+          <button name="submit" type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            <span class="d-sm-block">Cetak</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Modal Cetak -->
 
 <section class="section">
   <div class="section-header">
@@ -15,10 +66,23 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4>Laporan Kerjasama</h4>
+          <h4>Laporan Kerjasama <button class="btn btn-primary rounded-pill mb-2" data-bs-toggle="modal" data-bs-target="#cetak"><i class="fas fa-print"></i> Cetak</button></h4>
         </div>
 
+
         <div class="card-body">
+
+          <?php if ($errors = session()->getFlashdata('not-found')) : ?>
+            <div class="alert alert-danger alert-dismissible show fade">
+              <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                  <span>×</span>
+                </button>
+                <?= $errors ?>
+              </div>
+            </div>
+          <?php endif; ?>
+
           <table class="table" id="table-1">
             <thead>
               <tr style="text-align:center;">

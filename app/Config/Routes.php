@@ -32,11 +32,12 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 
+$routes->post('/export/laporan', 'PdfController::kerjasama', ['as' => 'export-laporan', 'filter' => 'auth:admin']);
 //Laporan
-$routes->get('/laporan', 'Laporan::index', ['filter' => 'auth', 'filter' => 'auth']);
+$routes->get('/laporan', 'Laporan::index', ['filter' => 'auth']);
 
 //usulan
-$routes->get('/usulan', 'Usulan::index', ['filter' => 'auth', 'filter' => 'auth']);
+$routes->get('/usulan', 'Usulan::index', ['filter' => 'auth']);
 $routes->post('/usulan/add', 'Usulan::add', ['as' => 'usulan-add']);
 $routes->post('/usulan/lihat', 'Usulan::lihat', ['as' => 'usulan-lihat', 'filter' => 'auth']);
 $routes->post('/usulan/update', 'Usulan::update', ['as' => 'usulan-update', 'filter' => 'auth']);

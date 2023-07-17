@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2023 at 11:33 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Jul 17, 2023 at 03:08 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,9 +39,20 @@ CREATE TABLE `tb_uks` (
   `rancangan_ik` varchar(255) DEFAULT NULL,
   `file_input_pk` varchar(255) NOT NULL,
   `file_input_dk` varchar(255) NOT NULL,
-  `status` enum('verif','proses','revisi','ttd','tolak') NOT NULL,
-  `id_users` int(11) NOT NULL
+  `status` enum('verif','proses','revisi','ttd','tolak','revisiadmin') NOT NULL,
+  `id_users` int(11) NOT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_uks`
+--
+
+INSERT INTO `tb_uks` (`id_uk`, `perihal_ks`, `awal_ks`, `akhir_ks`, `bentuk_kegiatan`, `unit_p_ks`, `deskripsi_ks`, `jenis_dokumen`, `rancangan_ik`, `file_input_pk`, `file_input_dk`, `status`, `id_users`, `keterangan`, `created_at`, `updated_at`) VALUES
+(89, 'hello', '2023-01-01', '2023-02-02', 'pendidikan', 'asd', 'asd', 'MOU', 'ad', '1689593586_823a859767929a12469f.pdf', '1689593586_638dbd25623206720218.pdf', 'ttd', 68, NULL, '2020-07-17', '2023-07-17'),
+(90, 'hai', '2019-01-01', '2023-02-02', 'pendidikan', 'asd', 'ads', 'MOU', 'asd', '1689594276_1ec1dd38b174592dc2cd.pdf', '1689594276_54db2a1b8c2c6eae3787.pdf', 'ttd', 68, NULL, '2019-07-17', '2023-07-17');
 
 -- --------------------------------------------------------
 
@@ -81,10 +92,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_users`, `foto`, `nik`, `nm_instansi`, `email`, `no_hp`, `provinsi`, `kota`, `password`, `roles`, `status`) VALUES
-(28, '1685418627_fbd776b53b3b22c61f35.jpg', '000', 'Politeknik Negeri Lampung', 'dev19web@gmail.com', '00000', 'lampung', 'Lampung Timur', '$2y$10$qOlgd2orzzD13yl5AdzeZeVMemUBSW9L7NYS0nN5yiNmYGOha26GO', 'admin', 0),
-(45, '1683728691_def538db450bb6f20d09.png', '111', 'Universitas Lampung', 'dev19web@gmail.com', '+1 (278) 674-5747', 'Recusandae Ea quia ', 'Enim rerum eos ut d', '$2y$10$r9sbQuE3pcIPaTfIkAbNfuGUSpdQgTv6ji.bgxmQxKcFNEUhVMjfG', 'user', 0),
-(48, '1685416091_5ebd2571cf5670a11789.png', '222', 'Institut Teknologi Bandung', 'tejolacoho@mailinator.com', '+1 (296) 597-26977', 'Libero eos possimus', 'Duis sed cupiditate', '$2y$10$fRZtXE5mhnatl6xZ1PdPguRGpDmcva3urDTtTUXGitkSC360PBT5W', 'pimpinan', 0),
-(68, '1683728691_def538db450bb6f20d09.png', '112', 'Universitas Lampung', 'mdzaky07@gmail.com', '+1 (278) 674-5747', 'Recusandae Ea quia ', 'Enim rerum eos ut d', '$2y$10$iuu0JTocdI1tkE7emlVgDuoBP9fqgqBWrihtVErtOLf.AvDx2OPee', 'user', 0);
+(28, '1685418627_fbd776b53b3b22c61f35.jpg', '1111111111111111', 'Politeknik Negeri Lampung', 'admin@mail.com', '00000', 'lampung', 'Lampung Timur', '$2y$10$LLjugOmk/Tx3oZDYzHuqH.H7AAhgLsUwgEaTAytufD.9COc8cJxUa', 'admin', 0),
+(48, '1685416091_5ebd2571cf5670a11789.png', '222', 'Institut Teknologi Bandung', 'pimpinan@mail.com', '+1 (296) 597-26977', 'Libero eos possimus', 'Duis sed cupiditate', '$2y$10$/nEZ1YnfIe1MIg8LfnUtEe6XsW.OliT40RnbSUcA6bTvzfK81pXnC', 'pimpinan', 0),
+(68, '1683728691_def538db450bb6f20d09.png', '112', 'Universitas Lampung', 'user@mail.com', '+1 (278) 674-5747', 'Recusandae Ea quia ', 'Enim rerum eos ut d', '$2y$10$44CELzMSFPLDSI7dzAzxWuW4k8xhL5Yg3NWINmWno5MjXp5cxDD/2', 'user', 0);
 
 --
 -- Indexes for dumped tables
@@ -118,7 +128,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_uks`
 --
 ALTER TABLE `tb_uks`
-  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `tokens`

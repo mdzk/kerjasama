@@ -17,6 +17,14 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Daftar dokumen yang berisikan (Penawaran Kerjasama) & (Draf Kerjasama)</h4>
+                    <form action="<?= route_to('search-dokumen'); ?>" method="POST" class="card-header-form">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-primary btn-icon"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="card-body">

@@ -121,8 +121,8 @@
       $('#table-1').DataTable();
     });
 
-    var dataJurnal = $.ajax({
-      url: "<?= base_url() . 'api/terlaksana'; ?>",
+    var dataKerjasama = $.ajax({
+      url: "<?= base_url() . 'json/kerjasama'; ?>",
       async: false,
       dataType: 'json'
     }).responseJSON;
@@ -134,7 +134,7 @@
         labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
         datasets: [{
           label: 'Statistics',
-          data: [640, 387, 530, 302, 430, 270, 488, 640, 387, 530, 302, 430],
+          data: dataKerjasama,
           borderWidth: 5,
           borderColor: '#6777ef',
           backgroundColor: 'transparent',
@@ -152,9 +152,6 @@
             gridLines: {
               display: false,
               drawBorder: false,
-            },
-            ticks: {
-              stepSize: 150
             }
           }],
           xAxes: [{

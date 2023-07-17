@@ -35,6 +35,7 @@ $routes->set404Override();
 $routes->post('/export/laporan', 'PdfController::kerjasama', ['as' => 'export-laporan', 'filter' => 'auth:admin']);
 //Laporan
 $routes->get('/laporan', 'Laporan::index', ['filter' => 'auth']);
+$routes->get('/json/kerjasama', 'Home::kerjasama', ['filter' => 'auth']);
 
 //usulan
 $routes->get('/usulan', 'Usulan::index', ['filter' => 'auth']);
@@ -74,6 +75,7 @@ $routes->post('/akun/update', 'Akun::update', ['as' => 'akun-update', 'filter' =
 
 //Dokumen
 $routes->get('/dokumen', 'Dokumen::index', ['filter' => 'auth']);
+$routes->post('/dokumen/search', 'Dokumen::search', ['as' => 'search-dokumen', 'filter' => 'auth']);
 
 //Profile
 $routes->get('/profile', 'Profile::index', ['filter' => 'auth']);

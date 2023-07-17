@@ -18,4 +18,17 @@ class Dokumen extends BaseController
         ];
         return view('user/dokumen', $data);
     }
+
+    public function search()
+    {
+        $searchTerm = $this->request->getVar('search');
+        $model      = new Model_Usulan();
+        $user       = new Model_Auth();
+
+        $data = [
+            'results' => $model->like('perihal_ks', $searchTerm)->findAll(),
+            'user'  => $user->find(session()->get('id_users')),
+        ];
+        return view('user/dokumen-search', $data);
+    }
 }

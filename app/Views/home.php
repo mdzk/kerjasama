@@ -127,7 +127,7 @@
               </div>
             </div>
             <div class="card-body">
-              <canvas id="myChart" style="display: block; width: 644px; height: 390px;" class="chartjs-render-monitor" width="644" height="390"></canvas>
+              <canvas id="myChart" style="display: block; width: 644px; height: 390px;" class="chartjs-render-monitor" width="644" height="190"></canvas>
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@
 <?php foreach ($tb_uks as $tb_uk) : ?>
   <!-- Revisi Modal -->
   <div class="modal fade text-left modal-borderless" id="editkategori<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Revisi Usulan Kerjasama</h5>
@@ -85,6 +85,74 @@
         <form action="<?= route_to('kerjasama-update'); ?>" method="POST">
           <div class="modal-body">
             <p>
+
+            <div class="form-group">
+              <label for="basicInput">Perihal Kerjasama</label>
+              <input type="text" name="perihal_ks" disabled value="<?= $tb_uk['perihal_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Donatur" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Awal Kerjasama</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['awal_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Akhir Kerjasama</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['akhir_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Bentuk Kegiatan</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['bentuk_kegiatan'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Unit Pelaksanaan Kerjasama</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['unit_p_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Deskripsi Kerjasama</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['deskripsi_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Jenis Dokumen</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['jenis_dokumen'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+            <div class="form-group">
+              <label for="basicInput">Rancangan Implementasi Kegiatan</label>
+              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['rancangan_ik'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
+            </div>
+
+            <div class="form-group">
+              <label for="basicInput">Dokumen Penawaran Kerjasama</label>
+              <table class="table" style="width: 20;">
+                <thead>
+                  <tr>
+                    <th scope="col">Penawaran Kerjasama</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="<?= base_url(); ?>pdf/<?= $tb_uk['file_input_pk']; ?>">Lihat Dokumen</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="form-group">
+              <table class="table" style="width: 20;">
+                <thead>
+                  <tr>
+                    <th scope="col">Draf Kerjasama </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="<?= base_url(); ?>pdf/<?= $tb_uk['file_input_dk']; ?>">Lihat Dokumen</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             <div class="form-group">
               <label for="">Keterangan</label>
               <input name="keterangan" class="form-control" type="text">

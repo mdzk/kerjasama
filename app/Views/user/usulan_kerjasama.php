@@ -55,7 +55,7 @@
                         <span class="badge badge-success">Acc</span>
                       <?php endif; ?>
                       <?php if ($tb_uk['status'] == 'revisi' || $tb_uk['status'] == 'revisiadmin') : ?>
-                        <span class="badge badge-primary">Revisi</span> <br>
+                        <span class="badge badge-warning">Revisi</span> <br>
                         <?php if ($tb_uk['keterangan'] !== NULL) : ?>
                           <span>Keterangan:</span><br>
                           <?= $tb_uk['keterangan']; ?>
@@ -78,7 +78,7 @@
                     <?php if (session('roles') == 'admin') : ?>
                       <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#verifikasi<?= $tb_uk['id_uk']; ?>">Verifikasi</a>
                       <?php if ($tb_uk['keterangan'] == NULL && $tb_uk['status'] == 'verif') : ?>
-                        <a href="#" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#revisi<?= $tb_uk['id_uk']; ?>">Revisi</a>
+                        <a href="#" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-toggle="modal" data-bs-target="#revisi<?= $tb_uk['id_uk']; ?>">Revisi</a>
                       <?php endif; ?>
 
                     <?php endif; ?>

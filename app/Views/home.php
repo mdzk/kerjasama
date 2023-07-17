@@ -18,8 +18,6 @@
           <div class="mt-4">
             <a href="<?= site_url('ajukan') ?>" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class=""></i> Ajukan Kerjasama</a>
             <a href="<?= site_url('usulan') ?>" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class=""></i> Usulan Kerjasama</a>
-            <a href="<?= site_url('aktif-kerjasama') ?>" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class=""></i> Kerjasama Aktif</a>
-            <a href="<?= site_url('kerjasama-berakhir') ?>" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class=""></i> Kerjasama Tidak Aktif</a>
           </div>
         <?php endif; ?>
       </div>

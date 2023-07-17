@@ -110,8 +110,8 @@
                     <?php if ($tb_uk['status'] == 'ttd') : ?>
                       <span class="badge badge-success">Acc</span>
                     <?php endif; ?>
-                    <?php if ($tb_uk['status'] == 'revisi') : ?>
-                      <span class="badge badge-primary">Revisi</span>
+                    <?php if ($tb_uk['status'] == 'revisi' || $tb_uk['status'] == 'revisiadmin') : ?>
+                      <span class="badge badge-warning">Revisi</span>
                     <?php endif; ?>
                     <?php if ($tb_uk['status'] == 'tolak') : ?>
                       <span class="badge badge-danger">Tolak</span>

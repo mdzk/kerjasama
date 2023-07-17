@@ -45,8 +45,8 @@
                     <?php if ($tb_uk['status'] == 'ttd') : ?>
                       <span class="badge badge-success">Acc</span>
                     <?php endif; ?>
-                    <?php if ($tb_uk['status'] == 'revisi') : ?>
-                      <span class="badge badge-primary">Revisi</span>
+                    <?php if ($tb_uk['status'] == 'revisi' || $tb_uk['status'] == 'revisiadmin') : ?>
+                      <span class="badge badge-warning">Revisi</span>
                     <?php endif; ?>
                     <?php if ($tb_uk['status'] == 'tolak') : ?>
                       <span class="badge badge-danger">Tolak</span>
@@ -71,94 +71,41 @@
 
 </section>
 <?php foreach ($tb_uks as $tb_uk) : ?>
-  <!-- Detail kerjasama modal -->
-  <div class="modal fade text-left modal-borderless" id="editkategori<?= $tb_uk['id_uk']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <!-- Revisi Modal -->
+  <div class="modal fade text-left modal-borderless" id="editkategori<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Detail Kerjasama</h5>
+          <h5 class="modal-title">Revisi Usulan Kerjasama</h5>
+          <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+            <i data-feather="x"></i>
+          </button>
         </div>
 
         <form action="<?= route_to('kerjasama-update'); ?>" method="POST">
-          <input type="hidden" name="id_uk" value="<?= $tb_uk['id_uk']; ?>">
           <div class="modal-body">
+            <p>
             <div class="form-group">
-              <label for="basicInput">Perihal Kerjasama</label>
-              <input type="text" name="perihal_ks" disabled value="<?= $tb_uk['perihal_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Nama Donatur" @error('name') is-invalid @enderror>
+              <label for="">Keterangan</label>
+              <input name="keterangan" class="form-control" type="text">
             </div>
-            <div class="form-group">
-              <label for="basicInput">Awal Kerjasama</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['awal_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
-            <div class="form-group">
-              <label for="basicInput">Akhir Kerjasama</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['akhir_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
-            <div class="form-group">
-              <label for="basicInput">Bentuk Kegiatan</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['bentuk_kegiatan'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
-            <div class="form-group">
-              <label for="basicInput">Unit Pelaksanaan Kerjasama</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['unit_p_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
-            <div class="form-group">
-              <label for="basicInput">Deskripsi Kerjasama</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['deskripsi_ks'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
-            <div class="form-group">
-              <label for="basicInput">Jenis Dokumen</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['jenis_dokumen'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
-            <div class="form-group">
-              <label for="basicInput">Rancangan Implementasi Kegiatan</label>
-              <input type="text" name="awal_ks" disabled value="<?= $tb_uk['rancangan_ik'] ?>" class="form-control" id="basicInput" placeholder="Masukkan Judul" @error('name') is-invalid @enderror>
-            </div>
+            </p>
 
-            <div class="form-group">
-              <label for="basicInput">Dokumen Penawaran Kerjasama</label>
-              <table class="table" style="width: 20;">
-                <thead>
-                  <tr>
-                    <th scope="col">Penawaran Kerjasama</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <a href="<?= base_url(); ?>pdf/<?= $tb_uk['file_input_pk']; ?>">Lihat Dokumen</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="form-group">
-              <table class="table" style="width: 20;">
-                <thead>
-                  <tr>
-                    <th scope="col">Draf Kerjasama </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <a href="<?= base_url(); ?>pdf/<?= $tb_uk['file_input_dk']; ?>">Lihat Dokumen</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <input type="text" value="<?= $tb_uk['id_uk']; ?>" name="id_uk" hidden>
           </div>
           <div class="modal-footer">
-            <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#revisi<?= $tb_uk['id_uk']; ?>">Revisi</a>
-            <button type="button" class="btn btn-light-danger" data-bs-dismiss="modal">
+            <button type="button" class="btn btn-light-primary ml-1" data-bs-dismiss="modal">
               <span class="d-sm-block">Tutup</span>
+            </button>
+            <button type="submit" name="submit" class="btn btn-primary" data-bs-dismiss="modal">
+              <span class="d-sm-block">Submit</span>
             </button>
           </div>
         </form>
       </div>
     </div>
   </div>
+  <!-- End Revisi Modal -->
 
   <!-- verivikasi revisi modal -->
   <div class="modal fade text-left modal-borderless" id="revisi<?= $tb_uk['id_uk']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">

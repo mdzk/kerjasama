@@ -22,20 +22,18 @@ class Kerjasama extends BaseController
 
     public function update()
     {
-        $tb_uk  = new Model_Usulan();
-        $tb_uk->replace([
-            'id_uk' => $this->request->getPost('id_uk'),
-            'perihal_ks' => $this->request->getPost('perihal_ks'),
-            'awal_ks' => $this->request->getVar('awal_ks'),
-            'akhir_ks' => $this->request->getVar('akhir_ks'),
-            'bentuk_kegiatan' => $this->request->getVar('bentuk_kegiatan'),
-            'unit_p_ks' => $this->request->getVar('unit_p_ks'),
-            'deskripsi_ks' => $this->request->getVar('deskripsi_ks'),
-            'jenis_dokumen' => $this->request->getVar('jenis_dokumen'),
-            'rancangan_ik' => $this->request->getVar('rancangan_ik'),
-        ]);
-        session()->setFlashdata('pesan', 'Data berhasil diedit');
-        return redirect()->to('user/kerjasama');
+        $tb_uk = new Model_Usulan();
+        $data = $tb_uk->find($this->request->getVar('id_uk'));
+        $data = [
+            'status' => 'revisi',
+            'keterangan' => $this->request->getVar('keterangan'),
+        ];
+        $tb_uk->set($data)
+            ->where('id_uk', $this->request->getVar('id_uk'))
+            ->update();
+
+        session()->setFlashdata('pesan', 'Usulan Kerja Sama Telah Diajukan Revisi');
+        return redirect()->back();
     }
 
     public function kerjasamaVerifAcc()

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 17, 2023 at 04:38 PM
+-- Generation Time: Jul 18, 2023 at 01:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,7 +52,7 @@ CREATE TABLE `tb_uks` (
 
 INSERT INTO `tb_uks` (`id_uk`, `perihal_ks`, `awal_ks`, `akhir_ks`, `bentuk_kegiatan`, `unit_p_ks`, `deskripsi_ks`, `jenis_dokumen`, `rancangan_ik`, `file_input_pk`, `file_input_dk`, `status`, `id_users`, `keterangan`, `created_at`, `updated_at`) VALUES
 (89, 'hello', '2023-01-01', '2023-02-02', 'pendidikan', 'asd', 'asd', 'MOU', 'ad', '1689593586_823a859767929a12469f.pdf', '1689593586_638dbd25623206720218.pdf', 'ttd', 68, NULL, '2020-07-17', '2023-07-17'),
-(90, 'hai', '2019-01-01', '2023-02-02', 'pendidikan', 'asd', 'ads', 'MOU', 'asd', '1689594276_1ec1dd38b174592dc2cd.pdf', '1689594276_54db2a1b8c2c6eae3787.pdf', 'ttd', 68, NULL, '2019-07-17', '2023-07-17');
+(90, 'hai', '2019-01-01', '2022-09-14', 'pendidikan', 'asd', 'ads', 'MOU', 'asd', '1689594276_1ec1dd38b174592dc2cd.pdf', '1689594276_54db2a1b8c2c6eae3787.pdf', 'ttd', 68, NULL, '2019-07-17', '2023-07-17');
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tb_uks`
 --
 ALTER TABLE `tb_uks`
-  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_uk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `tokens`

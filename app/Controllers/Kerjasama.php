@@ -32,6 +32,18 @@ class Kerjasama extends BaseController
             ->where('id_uk', $this->request->getVar('id_uk'))
             ->update();
 
+        $data = $tb_uk->find($this->request->getVar('id_uk'));
+        $email = \Config\Services::email();
+        $userModel = new Model_Auth();
+        $dataUser = $userModel->where('id_users', $data['id_users'])->first();
+        $message = view('email-revisi', $data);
+
+        $email->clear();
+        $email->setTo($dataUser['email']);
+        $email->setSubject('Kerjasama ' . $data['perihal_ks'] . ' Harap di Revisi!');
+        $email->setMessage($message);
+        $email->send();
+
         session()->setFlashdata('pesan', 'Usulan Kerja Sama Telah Diajukan Revisi');
         return redirect()->back();
     }
@@ -46,6 +58,19 @@ class Kerjasama extends BaseController
         ];
 
         $tb_uk->update($this->request->getPost('id_uk'), $data);
+
+        $data = $tb_uk->find($this->request->getVar('id_uk'));
+        $email = \Config\Services::email();
+        $userModel = new Model_Auth();
+        $dataUser = $userModel->where('id_users', $data['id_users'])->first();
+        $message = view('email-status', $data);
+
+        $email->clear();
+        $email->setTo($dataUser['email']);
+        $email->setSubject('Kerjasama ' . $data['perihal_ks'] . ' telah di Acc oleh Pimpinan!');
+        $email->setMessage($message);
+        $email->send();
+
         return redirect()->to('kerjasama');
     }
 
@@ -59,6 +84,19 @@ class Kerjasama extends BaseController
         ];
 
         $tb_uk->update($this->request->getPost('id_uk'), $data);
+
+        $data = $tb_uk->find($this->request->getVar('id_uk'));
+        $email = \Config\Services::email();
+        $userModel = new Model_Auth();
+        $dataUser = $userModel->where('id_users', $data['id_users'])->first();
+        $message = view('email-status', $data);
+
+        $email->clear();
+        $email->setTo($dataUser['email']);
+        $email->setSubject('Kerjasama ' . $data['perihal_ks'] . ' telah ditolak oleh Pimpinan!');
+        $email->setMessage($message);
+        $email->send();
+
         return redirect()->to('kerjasama');
     }
 
